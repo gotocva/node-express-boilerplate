@@ -6,10 +6,13 @@ import path from 'path';
 import { errorHandler } from './error.handler';
 import { responseHandler } from './response.handler';
 import { LOG } from '../config/winston';
+import { mongoConnect } from './database';
 
+mongoConnect();
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 app.use(errorHandler);
 app.use(responseHandler);
 
